@@ -12,6 +12,7 @@
 using namespace std;
 
 int main() {
+	// Variable declaration. Sets choice to 'Y' by default to facilitate loop.
 	std::string date;
 	int qty;
 	std::string isbn;
@@ -22,12 +23,14 @@ int main() {
 	char choice = 'Y';
 
 	do{
+	// Asks for user date input, initial menu.
 	std::cout 
 	<< "Serendipity Booksellers          \n"
 	<< "Cashier Module                   \n\n"
 	<< "Date: ";
 	std::getline(std::cin, date);
 
+	// Asks for quantity. If statement checks for valid input data type.
 	std::cout << "Quantity of Book: ";
 	std::cin >> qty;
 	if (std::cin.fail() == true){
@@ -39,13 +42,16 @@ int main() {
 		} while (std::cin.fail() == true);
 	}
 
+	// Asks for ISBN. Check not necessary because it is a string.
 	std::cout << "ISBN: ";
 	std::cin.ignore();
 	std::getline(std::cin, isbn);
 
+	// Asks for title. Check not necessary because it is a string.
 	std::cout << "Title: ";
 	std::getline(std::cin, title);
 
+	// Asks for price. If statement checks for valid input data type.
 	std::cout << "Price: "; 
 	std::cin >> price;
 	if (std::cin.fail() == true){
@@ -57,9 +63,11 @@ int main() {
 		} while (std::cin.fail() == true);
 	}
 
+	// Calculates total price and tax.
 	total = qty * price;
 	tax = 0.06 * total;
 
+	// Receipt printing.
 	std::cout 
 	<< "\nSerendipity Book Sellers \n"
 	<< "Date:" << date << "\n\n"
@@ -78,11 +86,15 @@ int main() {
 
 	std::cout << "Thank You for Shoppig at Serendipity! \n\n";
 
+	// Queries user for further transactions.
 	std::cout << "Would you like to make another transaction? (Y/N):";
 	std::cin >> choice;
 	std::cout << "\n";
+	// Check for lowercase input.
 	choice = std::toupper(choice);
 	std::cin.ignore();
+
+	// Check for inputs other than Y or N.
 	if (choice != 'Y' && choice != 'N'){
 		do{ 
 			std::cout << "Please enter Y or N:";
