@@ -6,7 +6,6 @@
 * Serendipity application.
 **********************************************************/
 
-#include <vector>
 #include <string>
 #include <iomanip>
 #include <iostream>
@@ -28,15 +27,35 @@ int main() {
 	<< "Cashier Module                   \n\n"
 	<< "Date: ";
 	std::getline(std::cin, date);
+
 	std::cout << "Quantity of Book: ";
 	std::cin >> qty;
+	if (std::cin.fail() == true){
+		do{ 
+			std::cin.clear();
+			std::cin.ignore();
+			std::cout << "Please enter a valid quantity:";
+			std::cin >> qty;
+		} while (std::cin.fail() == true);
+	}
+
 	std::cout << "ISBN: ";
 	std::cin.ignore();
 	std::getline(std::cin, isbn);
+
 	std::cout << "Title: ";
 	std::getline(std::cin, title);
+
 	std::cout << "Price: "; 
 	std::cin >> price;
+	if (std::cin.fail() == true){
+		do{ 
+			std::cin.clear();
+			std::cin.ignore();
+			std::cout << "Please enter a valid price:";
+			std::cin >> price;
+		} while (std::cin.fail() == true);
+	}
 
 	total = qty * price;
 	tax = 0.06 * total;
